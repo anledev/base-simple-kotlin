@@ -2,8 +2,8 @@ package com.anledev.basekotlinsimple.ui.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.anledev.basekotlinsimple.repository.AuthRepository
-import com.anledev.basekotlinsimple.repository.BaseRepository
+import com.anledev.basekotlinsimple.data.repository.AuthRepository
+import com.anledev.basekotlinsimple.data.repository.BaseRepository
 import com.anledev.basekotlinsimple.ui.auth.AuthViewModel
 
 @Suppress("UNCHECKED_CAST")

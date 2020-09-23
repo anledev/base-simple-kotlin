@@ -1,6 +1,6 @@
-package com.anledev.basekotlinsimple.repository
+package com.anledev.basekotlinsimple.data.repository
 
-import com.anledev.basekotlinsimple.network.Resource
+import com.anledev.basekotlinsimple.data.network.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException

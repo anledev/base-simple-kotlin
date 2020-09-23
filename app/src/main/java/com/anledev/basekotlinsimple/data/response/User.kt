@@ -1,4 +1,4 @@
-package com.anledev.basekotlinsimple.response
+package com.anledev.basekotlinsimple.data.response
 
 data class User(
     val access_token: String,

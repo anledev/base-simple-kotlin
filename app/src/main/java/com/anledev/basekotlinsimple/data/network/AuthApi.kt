@@ -1,6 +1,6 @@
-package com.anledev.basekotlinsimple.network
+package com.anledev.basekotlinsimple.data.network
 
-import com.anledev.basekotlinsimple.response.LoginResponse
+import com.anledev.basekotlinsimple.data.response.LoginResponse
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST

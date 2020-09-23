@@ -1,4 +1,4 @@
-package com.anledev.basekotlinsimple.network
+package com.anledev.basekotlinsimple.data.network
 
 import com.anledev.basekotlinsimple.BuildConfig
 import okhttp3.OkHttpClient
