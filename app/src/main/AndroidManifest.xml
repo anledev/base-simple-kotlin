@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".auth.AuthActivity" />
+        <activity android:name="com.anledev.basekotlinsimple.ui.auth.AuthActivity" />
     </application>
 
 </manifest>

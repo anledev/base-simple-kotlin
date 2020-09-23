@@ -1,4 +1,4 @@
-package com.anledev.basekotlinsimple.auth
+package com.anledev.basekotlinsimple.ui.auth
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
