@@ -16,10 +16,11 @@ class AuthViewModel(private val repository: AuthRepository) : ViewModel() {
         get() = _loginResponse
 
     fun login(email: String, password: String) = viewModelScope.launch {
+        _loginResponse.value = Resource.Loading
         _loginResponse.value = repository.login(email, password)
     }
 
-    fun saveAuthToken(token:String) = viewModelScope.launch {
-
+    fun saveAuthToken(token: String) = viewModelScope.launch {
+        repository.saveAuthToken(token)
     }
 }

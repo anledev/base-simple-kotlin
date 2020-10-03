@@ -6,15 +6,18 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import com.anledev.basekotlinsimple.data.network.AuthApi
 import com.anledev.basekotlinsimple.data.network.Resource
 import com.anledev.basekotlinsimple.data.repository.AuthRepository
 import com.anledev.basekotlinsimple.databinding.FragmentLoginBinding
 import com.anledev.basekotlinsimple.ui.base.BaseFragment
 import com.anledev.basekotlinsimple.ui.enable
+import com.anledev.basekotlinsimple.ui.handleApiError
 import com.anledev.basekotlinsimple.ui.home.HomeActivity
 import com.anledev.basekotlinsimple.ui.startNewActivity
 import com.anledev.basekotlinsimple.ui.visible
+import kotlinx.coroutines.launch
 
 class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepository>() {
 
@@ -25,15 +28,15 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
         binding.buttonLogin.enable(false)
 
         viewModel.loginResponse.observe(viewLifecycleOwner, Observer {
-            binding.progressbar.visible(false)
+            binding.progressbar.visible(it is Resource.Loading)
             when (it) {
                 is Resource.Success -> {
-                    viewModel.saveAuthToken(it.value.user.access_token)
-                    requireActivity().startNewActivity(HomeActivity::class.java)
+                    lifecycleScope.launch {
+                        viewModel.saveAuthToken(it.value.user.access_token)
+                        requireActivity().startNewActivity(HomeActivity::class.java)
+                    }
                 }
-                is Resource.Failure -> {
-                    Toast.makeText(requireContext(), "Login Failure", Toast.LENGTH_SHORT).show()
-                }
+                is Resource.Failure -> handleApiError(it)
             }
         })
 
@@ -46,7 +49,6 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
             val email = binding.editTextTextEmailAddress.text.toString().trim()
             val password = binding.editTextTextPassword.text.toString().trim()
             //@todo add input validations
-            binding.progressbar.visible(true)
             viewModel.login(email, password)
         }
     }
