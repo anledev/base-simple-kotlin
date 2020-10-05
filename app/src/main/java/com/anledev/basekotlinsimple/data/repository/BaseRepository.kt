@@ -1,6 +1,7 @@
 package com.anledev.basekotlinsimple.data.repository
 
 import com.anledev.basekotlinsimple.data.network.Resource
+import com.anledev.basekotlinsimple.data.network.UserApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException
@@ -21,5 +22,9 @@ abstract class BaseRepository {
                 }
             }
         }
+    }
+
+    suspend fun logout(api: UserApi) = safeApiCall {
+        api.logout()
     }
 }

@@ -46,11 +46,15 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
         }
 
         binding.buttonLogin.setOnClickListener {
-            val email = binding.editTextTextEmailAddress.text.toString().trim()
-            val password = binding.editTextTextPassword.text.toString().trim()
-            //@todo add input validations
-            viewModel.login(email, password)
+            login()
         }
+    }
+
+    private fun login(){
+        val email = binding.editTextTextEmailAddress.text.toString().trim()
+        val password = binding.editTextTextPassword.text.toString().trim()
+        //@todo add input validations
+        viewModel.login(email, password)
     }
 
     override fun getViewModel(): Class<AuthViewModel> = AuthViewModel::class.java
